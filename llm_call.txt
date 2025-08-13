@@ -1,0 +1,16 @@
+    # Free api 
+    # response = requests.post(
+    #     url="https://openrouter.ai/api/v1/chat/completions",
+    #     headers={
+    #             "Authorization": f"Bearer {QWEN_API_KEY}",
+    #             "Content-Type": "application/json"
+    #         },
+    #         data=json.dumps({
+    #             "model": "qwen/qwen-2.5-72b-instruct:free",
+    #             "messages": [
+    #             {
+    #                 "role": "user",
+    #                 "content": prompt
+    #             }
+    #             ]
+    #         }))
