@@ -21,31 +21,29 @@ def get_tip():
 @gateway_bp.route('/api/agent', methods=['POST'])
 def agent_action():
     # For form-data text fields
-    form_data = dict(request.form) 
+    form_data = request.get_json()
 
-    # For uploaded files (optional)
-    image_file = request.files.get("image")
-    voice_file = request.files.get("voice")
+    # # For uploaded files (optional)
+    # image_file = request.files.get("image")
+    # voice_file = request.files.get("voice")
 
-    image_path = None
-    if image_file:
-        image_path = os.path.join(UPLOAD_FOLDER, image_file.filename)
-        image_file.save(image_path)
+    # image_path = None
+    # if image_file:
+    #     image_path = os.path.join(UPLOAD_FOLDER, image_file.filename)
+    #     image_file.save(image_path)
 
-    voice_path = None
-    if voice_file:
-        voice_path = os.path.join(UPLOAD_FOLDER, voice_file.filename)
-        voice_file.save(voice_path)
+    # voice_path = None
+    # if voice_file:
+    #     voice_path = os.path.join(UPLOAD_FOLDER, voice_file.filename)
+    #     voice_file.save(voice_path)
 
     print(f"Form Data: {form_data}")
-    print(f"Image Path: {image_path}")
-    print(f"Voice Path: {voice_path}")
+    # print(f"Image Path: {image_path}")
+    # print(f"Voice Path: {voice_path}")
 
     # Build state for the workflow
     workflow_input = {
-        "message": form_data,
-        "image_path": image_path,
-        "voice_path": voice_path
+        "input": form_data,
     }
 
     workflow_result = run_agent_workflow(workflow_input)
